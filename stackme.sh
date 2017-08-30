@@ -58,8 +58,11 @@ git clone https://github.com/openstack/neutron-fwaas-dashboard
 cd neutron-fwaas-dashboard
 git fetch https://git.openstack.org/openstack/neutron-fwaas-dashboard FWAAS_DASHBOARD_PATCH && git checkout FETCH_HEAD
 pip install .
-rm /opt/stack/horizon/openstack_dashboard/local/enabled/*_project_firewalls_v2_panel.py*
+#rm /opt/stack/horizon/openstack_dashboard/local/enabled/*_project_firewalls_v2_panel.py*
 cp neutron_fwaas_dashboard/enabled/_70*_project_firewalls*.py  /opt/stack/horizon/openstack_dashboard/local/enabled/
+cd /opt/stack/horizon/
+./manage.py collectstatic
+./manage.py compress
 service apache2 restart
 # Drop into a shell
 su - stack
