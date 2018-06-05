@@ -2,6 +2,8 @@
 
 FWAAS_PATCH=""
 FWAAS_DASHBOARD_PATCH=""
+NEUTRON_CLIENT_PATCH=""
+
 
 # Quick sanity check (should be run on Ubuntu 16.04 and MUST be run as root directly)
 if [ `lsb_release -rs` != "16.04" ]
@@ -38,6 +40,7 @@ cat >>/opt/stack/.profile <<EOF
 # Prepare patches for local.conf
 export FWAAS_PATCH="$FWAAS_PATCH"
 export FWAAS_DASHBOARD_PATCH="$FWAAS_DASHBOARD_PATCH"
+export NEUTRONCLIENT_BRANCH="$NEUTRON_CLIENT_PATCH"
 EOF
 
 # Precreate .cache so it won't have the wrong perms
